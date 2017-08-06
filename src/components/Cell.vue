@@ -1,11 +1,36 @@
 <template>
-	
+	<td class="cell" @click="strike">{{ mark }}</td>
 </template>
 
 <script>
 	export default {
-		data () {}
+		props: ['name'],
+		data () {
+			return {
+			//this will allow the player to place a mark, X or O
+			frozen: false,
+			// hold the X or 0 in the grid
+			mark: ''
+			}
+		},
+
+		methods: {
+			strike () {
+				if(! this.frozen) {
+					//gets either the X or O from Grid component
+					this.mark  = this.$parent.activePlayer
+
+					this.frozen = true
+
+
+					// fires an event to notify the Grid component that a mark is placed
+					Event.$emit('strike', this.name)
+				}
+
+			}
+		},
 	}
+
 </script>
 
 <style>

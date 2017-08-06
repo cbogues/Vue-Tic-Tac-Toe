@@ -8,13 +8,18 @@
 </template>
 
 <script>
+import Grid from './components/Grid.vue'
 export default {
   name: 'app',
   data () {
     return {
-      
+      matches: 0,
+      wins: {
+        0: 0,
+        X: 0 
+      }
     }
-  }
+  },
 }
 </script>
 
@@ -36,7 +41,7 @@ body {
 }
 
 h1 {
-  text = transform: uppercase;
+  text-transform: uppercase;
   font-weight: bold;
   font-size: 3em;
 }
